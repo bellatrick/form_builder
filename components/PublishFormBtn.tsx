@@ -16,13 +16,16 @@ import { FaIcons } from "react-icons/fa";
 import { toast } from "./ui/use-toast";
 import { PublishMainForm } from "@/actions/form";
 import { useRouter } from "next/navigation";
+import useDesigner from "./hooks/useDesigner";
 
 const PublishFormBtn = ({ id }: { id: number }) => {
   const [loading, startTransition] = useTransition();
+  const { elements } = useDesigner();
   const router = useRouter();
   async function PublishForm() {
+    const jsonElements = JSON.stringify(elements);
     try {
-      await PublishMainForm(id);
+      await PublishMainForm(id, jsonElements);
       toast({
         title: "success",
         description: "Your form is now available to recieve submissions",
@@ -38,7 +41,6 @@ const PublishFormBtn = ({ id }: { id: number }) => {
   return (
     <AlertDialog>
       <AlertDialogTrigger asChild>
-
         <Button
           variant={"outline"}
           className="gap-2 text-wite bg-gradient-to-r from-indigo-400 to-cyan-400"

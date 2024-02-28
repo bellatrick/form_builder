@@ -78,7 +78,7 @@ function DesignerComponent({
   return (
     <div className="flex items-top space-x-2">
       <Checkbox id={id} />
-      <div className="grid gap-1 leading-none">
+      <div className="grid gap-2 leading-none">
         <Label>
           {label}
           {required && "*"}
@@ -236,7 +236,7 @@ function FormComponent({
         }}
         className={cn(error && "border-red-500")}
       />
-      <div className="grid gap-.5 leading-none">
+      <div className="grid gap-2 leading-none">
         <Label htmlFor={id} className={cn(error&&'text-red-500')}>
           {label}
           {required && "*"}
